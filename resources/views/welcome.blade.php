@@ -24,11 +24,11 @@
             body {
                 font-family: 'Nunito', sans-serif;
                 min-width: 100vw;
-                background-color: #16161a;
             }
+            
         </style>
     </head>
-    <body ">
+    <body>
         <div id="app">
             <app></app>
         </div>

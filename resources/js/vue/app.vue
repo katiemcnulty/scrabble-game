@@ -20,7 +20,6 @@
 </script>
 
 <style scoped>
-
     .container {
         background-color: #16161a;
         min-height: 100vh;
@@ -32,6 +31,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 2em;
     }
-    
+
+    .modal-backdrop {
+        background-color: #16161a;
+        opacity: 1;
+    }
+
 </style>
