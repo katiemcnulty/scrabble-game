@@ -2103,6 +2103,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -2155,7 +2182,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.container[data-v-e9db602c] {\r\n    background-color: #16161a;\r\n    min-height: 100vh;\r\n    color: #fffffe\n}\n.heading[data-v-e9db602c] {\r\n        display: flex;\r\n        justify-content: center;\r\n        align-items: center;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.container[data-v-e9db602c] {\n    background-color: #16161a;\n    min-height: 100vh;\n    color: #fffffe\n}\n.heading[data-v-e9db602c] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2179,7 +2206,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.addMember[data-v-32147a78] {\r\n    margin-top: 1em;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\n}\n.addMember input[data-v-32147a78] {\r\n    border: 1px #94a1b2 solid;\r\n    margin: 1em;\r\n    padding: 0.5em;\n}\nbutton[data-v-32147a78] {\r\n    color: #fffffe;\r\n    background-color: #7f5af0;\r\n    padding: 0.5em;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.addMember[data-v-32147a78] {\n    margin-top: 1em;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.addMember input[data-v-32147a78] {\n    border: 1px #94a1b2 solid;\n    margin: 1em;\n    padding: 0.5em;\n}\nbutton[data-v-32147a78] {\n    justify-content: center;\n    align-items: center;\n    background-color: #7f5af0;\n    color: #fffffe;\n    opacity: 0.8;\n    transition: 0.4s;\n}\nbutton[data-v-32147a78]:hover {\n    background-color: #2cb67d;\n    opacity: 1;\n}\n.modal[data-v-32147a78] {\n    color: #16161a;\n    background-color: #72757e;\n}\n\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -20244,11 +20271,102 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "addMember" }, [
-      _c("input", { attrs: { type: "text", placeholder: "Enter Name" } }),
+      _c(
+        "button",
+        {
+          staticClass: "btn ",
+          attrs: {
+            type: "button",
+            "data-toggle": "modal",
+            "data-target": "#exampleModal",
+          },
+        },
+        [_vm._v("\r\n  Add Member\r\n")]
+      ),
       _vm._v(" "),
-      _c("input", { attrs: { type: "email", placeholder: "Enter Email" } }),
-      _vm._v(" "),
-      _c("button", [_vm._v("Add Member")]),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "exampleModal",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true",
+          },
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "modal-dialog", attrs: { role: "document" } },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "modal-header" }, [
+                  _c(
+                    "h5",
+                    {
+                      staticClass: "modal-title",
+                      attrs: { id: "exampleModalLabel" },
+                    },
+                    [_vm._v("Add New Member")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "close",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "modal",
+                        "aria-label": "Close",
+                      },
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("×"),
+                      ]),
+                    ]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("label", { attrs: { for: "name" } }, [
+                    _vm._v("Name: "),
+                    _c("input", {
+                      attrs: { type: "text", placeholder: "Enter Name" },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("label", [
+                    _vm._v("Email: "),
+                    _c("input", {
+                      attrs: { type: "email", placeholder: "Enter Email" },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn ",
+                      attrs: { type: "button", "data-dismiss": "modal" },
+                    },
+                    [_vm._v("Close")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    { staticClass: "btn ", attrs: { type: "button" } },
+                    [_vm._v("Add Member")]
+                  ),
+                ]),
+              ]),
+            ]
+          ),
+        ]
+      ),
     ])
   },
 ]

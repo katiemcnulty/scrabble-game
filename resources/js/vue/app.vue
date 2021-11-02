@@ -20,10 +20,12 @@
 </script>
 
 <style scoped>
+
     .container {
         background-color: #16161a;
         min-height: 100vh;
-        color: #fffffe
+        min-width: 100vw;
+        color: #fffffe;
     }
 
     .heading {
@@ -31,5 +33,5 @@
         justify-content: center;
         align-items: center;
     }
-
+    
 </style>
