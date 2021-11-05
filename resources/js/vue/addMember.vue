@@ -3,23 +3,24 @@
 
         <div class="addMember">
             <!-- Button trigger modal -->
-            <button type="button" class="btn " data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn " data-toggle="modal" data-target="#addMemberModal">
                 Add Member
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="addMemberModal" tabindex="-1" role="dialog" aria-labelledby="addMemberLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add New Member</h5>
+                            <h5 class="modal-title" id="addMemberLabel">Add New Member</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <label for="name">Name: <input type="text" placeholder="Enter Name" v-model="member.name"></label>
+                            <label for="name">Name: <input type="text" placeholder="Enter Name"
+                                    v-model="member.name"></label>
                             <label>Email: <input type="email" placeholder="Enter Email" v-model="member.email"></label>
                         </div>
                         <div class="modal-footer">
@@ -55,27 +56,27 @@
             }
         },
         methods: {
-            addMember () {
-                if(this.member.name && this.member.email == '') {
+            addMember() {
+                if (this.member.name && this.member.email == '') {
                     return
                 }
 
                 axios.post('/member/store', {
-                    member: {
-                        name: this.member.name,
-                        email: this.member.email
-                    }
-                })
-                .then( response => {
-                    if(response.status == 201 ) {
-                        this.member.name = "";
-                        this.member.email = "";
-                        this.$emit('reloadlist');
-                    }
-                })
-                .catch (error => {
-                    console.log(error);
-                })
+                        member: {
+                            name: this.member.name,
+                            email: this.member.email
+                        }
+                    })
+                    .then(response => {
+                        if (response.status == 201) {
+                            this.member.name = "";
+                            this.member.email = "";
+                            this.$emit('reloadlist');
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
             }
         }
 
@@ -87,11 +88,12 @@
 
 <style scoped>
     .addMember {
-        margin-top: 1em;
+        margin: 1em;
         display: flex;
         justify-content: center;
         align-items: center;
-
+        border: #2cb67d 2px solid;
+        border-radius: 0.5em;
     }
 
     .addMember input {

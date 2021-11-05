@@ -3,7 +3,7 @@
         <div class="heading">
             <h1>Members</h1>
         </div>
-        <div>
+        <div class="buttons">
             <add-member />
             <add-game />
         </div>
@@ -67,5 +67,9 @@
         background-color: #16161a;
         opacity: 1;
     }
-
+    .buttons {
+        display: flex;
+        justify-content: center;
+        
+    }
 </style>
