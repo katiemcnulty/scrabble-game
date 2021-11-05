@@ -3,18 +3,47 @@
         <div class="heading">
             <h1>Members</h1>
         </div>
-        <add-member />
+        <div>
+            <add-member />
+            <add-game />
+        </div>
+        
+        <member-list :members="members"/>
     </div>
 
 </template>
 
 <script>
     import addMember from "./addMember.vue"
+    import MemberList from './memberList.vue'
+    import addGame from './addGame.vue'
+
 
     export default {
         components: {
             addMember,
+            MemberList,
+            addGame
         },
+        data: function () {
+            return {
+                members: []
+            }
+        },
+        methods: {
+            getList() {
+                axios.get('/members')
+                    .then(response => {
+                        this.members = response.data
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            }
+        },
+        created() {
+            this.getList();
+        }
     }
 
 </script>
