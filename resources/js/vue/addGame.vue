@@ -11,24 +11,43 @@
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
+
+                        <!-- Modal header -->
                         <div class="modal-header">
                             <h5 class="modal-title" id="addGameLabel">Record New Game</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+
+                        <!-- Modal body -->
                         <div class="modal-body">
-                            <label for="name">Name: <input type="text" placeholder="Enter Name"
-                                    ></label>
-                            <label>Email: <input type="email" placeholder="Enter Email"></label>
+                            <div class="dropdown player1score">
+                                <select name="player1" v-model="game.player1" >
+                                    <option v-for='(member, index) in members' v-bind:value="member.id" :key='index' >{{member.name}}</option>
+                                </select>
+                                <input type="text" placeholder="Enter Score" v-model="game.player1Score">
+                            </div>
+
+                            <div class="dropdown player2score">
+                                
+                                <select name="player2" v-model="game.player2" >
+                                    <option v-for='(member, index) in members' v-bind:value="member.id" :key='index'>{{member.name}}</option>
+                                </select>
+                                <input type="text" placeholder="Enter Score" v-model="game.player2Score">
+                            </div>
+
                         </div>
+
+                        <!-- Modal Footer with buttons -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn ">Add Member</button>
+                            <button type="button" class="btn" @click="addGame()">Record Game</button>
                         </div>
                     </div>
                 </div>
             </div>
+         
 
         </div>
 
@@ -37,8 +56,45 @@
 
 <script>
     export default {
-
+        props: ['members'],
+        data: function () {
+            return {
+                game: {
+                    player1: '',
+                    player2: '',
+                    player1Score: '',
+                    player2Score: ''
+                }
+            }
+        },
+        methods: {
+            addGame() {
+                axios.post('/game/store', {
+                    game: {
+                        player1: this.game.player1,
+                        player2: this.game.player2,
+                        player1Score: this.game.player1Score,
+                        player2Score: this.game.player2Score
+                    }
+                })
+                .then(response => {
+                        if (response.status == 201) {
+                            this.game.player1 = "";
+                            this.game.player2= "";
+                            this.game.player1Score= "";
+                            this.game.player2Score= "";
+                            this.$refs.close.click();
+                            this.$root.$emit('reloadlist');
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            }
+        }
     }
+    
+    
 
 </script>
 
@@ -57,19 +113,19 @@
         opacity: 1;
 
     }
+
     .addGame {
-        
+
         margin: 1em;
         display: flex;
         justify-content: center;
         align-items: center;
         border: #2cb67d 2px solid;
         border-radius: 0.5em;
-
     }
     .modal {
         color: #16161a;
-        background-color: #72757e;
+        background-color: #16161a;
     }
 
     .close:hover,

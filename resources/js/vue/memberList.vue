@@ -4,7 +4,7 @@
                
         <div v-for="(member, index) in members" :key="index">
             
-            <list-member :member="member" class="member" />
+            <list-member :member="member" class="member" v-on:itemchanged="$emit('reloadlist')"/>
         </div>
     </div>
 </template>

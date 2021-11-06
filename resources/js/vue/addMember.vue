@@ -24,16 +24,13 @@
                             <label>Email: <input type="email" placeholder="Enter Email" v-model="member.email"></label>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-close" data-dismiss="modal" ref="close">Close</button>
                             <button type="button" class="btn " @click="addMember()">Add Member</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-        </div>
-        <div class="listMember">
-            <member-list />
         </div>
     </div>
 
@@ -71,7 +68,8 @@
                         if (response.status == 201) {
                             this.member.name = "";
                             this.member.email = "";
-                            this.$emit('reloadlist');
+                            this.$refs.close.click();
+                            this.$root.$emit('reloadlist');
                         }
                     })
                     .catch(error => {
@@ -114,12 +112,11 @@
     button:hover {
         background-color: #2cb67d;
         opacity: 1;
-
     }
 
     .modal {
         color: #16161a;
-        background-color: #72757e;
+        background-color: #16161a;
     }
 
     .close:hover,
@@ -128,13 +125,6 @@
         color: #fffffe;
         opacity: 1;
 
-    }
-
-    .listMember {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
     }
 
 </style>

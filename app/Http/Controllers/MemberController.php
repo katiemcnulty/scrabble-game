@@ -15,7 +15,51 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return Member::orderBy('created_at', 'ASC')->get();
+        $members = Member::orderBy('created_at', 'ASC')->get();
+
+        
+        foreach($members as $member ) {
+
+            //add to each score for each game
+            $score = 0;
+            $totalGames = 0;
+            $winner = 0;
+            $loser = 0;    
+            $highestScore = 0;
+            $highestScoringGame = null;
+                             
+
+            foreach($member->player1Games as $game) {
+                $score += $game->player1_score;
+
+                if($game->player1_score > $game->player2_score) {
+                    $winner++;
+                } else {
+                    $loser++;
+                }
+                $totalGames++;
+            }
+            foreach($member->player2Games as $game) {
+                $score += $game->player2_score;
+
+                $totalGames++;
+            }
+
+            if($totalGames===0 || $score === 0){
+                $memberAvg = 0;
+
+            }else {
+                
+                $memberAvg =  $score/$totalGames;
+            }
+
+            $member->highestScore;
+            $member->wins = $winner;
+            $member->loses = $loser;
+            $member->averageScore= round($memberAvg,2);
+        }
+
+        return $members;
     }
 
 
@@ -28,7 +72,21 @@ class MemberController extends Controller
 
         return $newMember;
     }
-    
+    public function update(Request $request, $id)
+    {
+        $existingMember = Member::find($id);
+
+        if( $existingMember) {
+            $existingMember->name = $request->get('member')['name'];
+            $existingMember->email = $request->get('member')['email'];
+
+            $existingMember->save();
+            return $existingMember;
+        }
+
+        return "Member not found";
+
+    }
     public function destroy($id)
     {
         //

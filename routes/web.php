@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,5 +27,14 @@ Route::prefix('/member')->group(function ()
         Route::put('{id}', [MemberController::class, 'update']);
         Route::delete('/{id}', [MemberController::class, 'destroy']);
 
+    }
+);
+
+Route::get('/games', [GameController::class, 'index']);
+
+Route::prefix('/game')->group(function () 
+    {
+        Route::post('/store', [GameController::class, 'store']);
+        
     }
 );

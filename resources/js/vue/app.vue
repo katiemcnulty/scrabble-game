@@ -5,10 +5,13 @@
         </div>
         <div class="buttons">
             <add-member />
-            <add-game />
+            <add-game :members="members" />
+            <a href="/"><button>Reload List</button></a>
+            
         </div>
         
-        <member-list :members="members"/>
+        <member-list :members="members" v-on:reloadlist="getList()"/>
+        
     </div>
 
 </template>
@@ -50,6 +53,7 @@
 
 <style scoped>
     .container {
+        font-size: 24px;
         background-color: #16161a;
         min-height: 100vh;
         min-width: 100vw;
@@ -70,6 +74,21 @@
     .buttons {
         display: flex;
         justify-content: center;
-        
+        margin: 1em;
+               
+    }
+    button {
+        justify-content: center;
+        align-items: center;
+        background-color: #7f5af0;
+        color: #fffffe;
+        opacity: 0.8;
+        transition: 0.4s;
+    }
+
+    button:hover {
+        background-color: #2cb67d;
+        opacity: 1;
+
     }
 </style>
