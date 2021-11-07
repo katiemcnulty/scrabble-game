@@ -21613,6 +21613,7 @@ var render = function () {
                   _c(
                     "button",
                     {
+                      ref: "close",
                       staticClass: "btn btn-close",
                       attrs: { type: "button", "data-dismiss": "modal" },
                     },

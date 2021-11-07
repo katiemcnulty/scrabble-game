@@ -61,7 +61,7 @@ class MemberController extends Controller
 
                 //calculate winner or loser
 
-                if($game->player1_score > $game->player2_score) {
+                if($game->player2_score > $game->player1_score) {
                     $winner++;
                 } else {
                     $loser++;

@@ -43,7 +43,7 @@
 
                         <!-- Modal Footer with buttons -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-close" data-dismiss="modal" ref="close">Close</button>
                             <button type="button" class="btn" @click="addGame()">Record Game</button>
                         </div>
                     </div>
