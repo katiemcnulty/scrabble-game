@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Models\Member;
-use Carbon\Carbon;
+
 
 class MemberController extends Controller
 {
@@ -18,6 +19,8 @@ class MemberController extends Controller
         $members = Member::orderBy('created_at', 'ASC')->get();
 
         
+
+        
         foreach($members as $member ) {
 
             //add to each score for each game
@@ -26,24 +29,56 @@ class MemberController extends Controller
             $winner = 0;
             $loser = 0;    
             $highestScore = 0;
-            $highestScoringGame = null;
+            $highestScoringGame = false;
+            $highestScoringPlayer = '';
                              
-
+            //calculating player1 and player2 games
             foreach($member->player1Games as $game) {
                 $score += $game->player1_score;
 
+                //calculate winner or loser
                 if($game->player1_score > $game->player2_score) {
                     $winner++;
                 } else {
                     $loser++;
                 }
+
+                //calculate highest score
+                if ($game->player1_score > $highestScore){
+                    $highestScore = $game->player1_score;
+                    $highestScoringGame = true;
+                    
+                } else {
+                    $highestScoringGame = 'No Game Data';
+                }
+
+                               
                 $totalGames++;
             }
+
             foreach($member->player2Games as $game) {
                 $score += $game->player2_score;
 
+                //calculate winner or loser
+
+                if($game->player1_score > $game->player2_score) {
+                    $winner++;
+                } else {
+                    $loser++;
+                }               
+
+                //calculate highest score
+                if ($game->player2_score > $highestScore){
+                    $highestScore = $game->player2_score;
+                    $highestScoringGame = true;
+                } else {
+                    $highestScoringGame = 'No Game Data';
+                }
+
                 $totalGames++;
             }
+
+            //calculating average score
 
             if($totalGames===0 || $score === 0){
                 $memberAvg = 0;
@@ -53,7 +88,16 @@ class MemberController extends Controller
                 $memberAvg =  $score/$totalGames;
             }
 
-            $member->highestScore;
+            //adding time of game for highest score
+            if ($highestScoringGame) {
+                $bestGameTime = date("Y-d-m H:i",strtotime($game->date_played));
+            } else {
+                $bestGameTime = 'No Game Data';
+            } 
+
+            $member->bestGameTime = $bestGameTime;
+            $member->highScore = $highestScore;
+            $member->bestPlayer = $highestScoringPlayer;
             $member->wins = $winner;
             $member->loses = $loser;
             $member->averageScore= round($memberAvg,2);

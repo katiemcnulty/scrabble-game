@@ -1,17 +1,16 @@
 <template>
     <div class="container">
         <div class="heading">
-            <h1>Members</h1>
+            <h1>Scrabble Club Members</h1>
         </div>
         <div class="buttons">
             <add-member />
             <add-game :members="members" />
-            <a href="/"><button>Reload List</button></a>
-            
+            <a href="/"><button class="btn">Reload List</button></a>
         </div>
-        
-        <member-list :members="members" v-on:reloadlist="getList()"/>
-        
+
+        <member-list :members="members" v-on:reloadlist="getList()" />
+
     </div>
 
 </template>
@@ -53,7 +52,7 @@
 
 <style scoped>
     .container {
-        font-size: 24px;
+        font-size: 22px;
         background-color: #16161a;
         min-height: 100vh;
         min-width: 100vw;
@@ -71,12 +70,15 @@
         background-color: #16161a;
         opacity: 1;
     }
+
     .buttons {
         display: flex;
-        justify-content: center;
-        margin: 1em;
-               
+        justify-content: space-evenly;
+        width: 50%;
+        margin: auto;
+        
     }
+
     button {
         justify-content: center;
         align-items: center;
@@ -91,4 +93,5 @@
         opacity: 1;
 
     }
+
 </style>

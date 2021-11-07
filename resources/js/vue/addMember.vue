@@ -86,12 +86,10 @@
 
 <style scoped>
     .addMember {
-        margin: 1em;
         display: flex;
         justify-content: center;
         align-items: center;
-        border: #2cb67d 2px solid;
-        border-radius: 0.5em;
+        
     }
 
     .addMember input {

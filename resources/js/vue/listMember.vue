@@ -28,9 +28,10 @@
         background-color: #fffffe;
         color: #16161a;
         border-radius: 1em;
+        margin: auto;
         width: 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
     }
 
 </style>

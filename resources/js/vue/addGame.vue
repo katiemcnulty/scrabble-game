@@ -24,6 +24,7 @@
                         <div class="modal-body">
                             <div class="dropdown player1score">
                                 <select name="player1" v-model="game.player1" >
+                                    <option value="" selected disabled hidden>Select player</option>
                                     <option v-for='(member, index) in members' v-bind:value="member.id" :key='index' >{{member.name}}</option>
                                 </select>
                                 <input type="text" placeholder="Enter Score" v-model="game.player1Score">
@@ -32,6 +33,7 @@
                             <div class="dropdown player2score">
                                 
                                 <select name="player2" v-model="game.player2" >
+                                    <option value="" selected disabled hidden>Select player</option>
                                     <option v-for='(member, index) in members' v-bind:value="member.id" :key='index'>{{member.name}}</option>
                                 </select>
                                 <input type="text" placeholder="Enter Score" v-model="game.player2Score">
@@ -115,17 +117,13 @@
     }
 
     .addGame {
-
-        margin: 1em;
         display: flex;
         justify-content: center;
         align-items: center;
-        border: #2cb67d 2px solid;
-        border-radius: 0.5em;
+        
     }
     .modal {
         color: #16161a;
-        background-color: #16161a;
     }
 
     .close:hover,

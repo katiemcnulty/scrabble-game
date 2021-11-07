@@ -24,7 +24,6 @@
 <style scoped>
     .member {
         display: flex;
-        justify-content: center;
         max-width: 50%;
         margin: auto;
         margin-top: 1em;

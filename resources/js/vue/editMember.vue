@@ -76,5 +76,10 @@
 </script>
 
 <style scoped>
+input {
+    box-sizing: border-box;
+    border: #7f5af0 2px solid;
+    border-radius:10px;
+}
 
 </style>
